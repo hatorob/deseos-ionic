@@ -19,7 +19,7 @@ export class Tab1Page {
   }
 
   async agregarLista() {  //EL async nos permite transformar el agregarLista() a una promesa
-    /* this.router.navigateByUrl('tabs/tab1/agregar'); */
+    
 
     const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-class',
@@ -47,7 +47,10 @@ export class Tab1Page {
               return;
             }
             // Aquí creamos la lista
-            this.deseosService.crearLista( data.titulo );
+            const listaId = this.deseosService.crearLista( data.titulo );
+
+            //ir a agregar
+            this.router.navigateByUrl(`tabs/tab1/agregar/${listaId}`);
             
           }
         }
